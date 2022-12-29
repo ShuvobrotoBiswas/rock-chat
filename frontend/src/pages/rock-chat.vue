@@ -1,26 +1,35 @@
 <template>
   <div id="chatContainer">
-    <div class="chatHeader">
-      <h4>Bot</h4>
-    </div>
-    <div class="chatBody">
-      <div class="messages" v-for="message in messages" :key="message.id">
-        <div class="messageRow user" v-if="message.id % 2 == 0">
-          <div class="message user">
-            <p>{{ message.message }}</p>
+    <div class="row flex-center text-h6 text-green">Rock Bot</div>
+    <q-scroll-area style="height: 85%">
+      <div class="chatBody">
+        <div class="messages" v-for="message in messages" :key="message.id">
+          <div class="messageRow user" v-if="message.id % 2 == 0">
+            <div class="message user">
+              <p>{{ message.message }}</p>
+            </div>
           </div>
-        </div>
-        <div class="messageRow bot" v-else>
-          <div class="message bot">
-            <p>{{ message.message }}</p>
+          <div class="messageRow bot" v-else>
+            <div class="message bot">
+              <p>{{ message.message }}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </q-scroll-area>
+
     <div class="chatFooter">
       <form @submit.prevent="sendMessage()">
-        <input v-model="messageContent" id="createMessage" />
-        <input type="submit" />
+        <q-input
+          autofocus
+          class="q-pa-md"
+          dense
+          outlined
+          color="green"
+          v-model="messageContent"
+          id="createMessage"
+        />
+        <q-btn flat icon="send" color="green" type="submit" />
       </form>
     </div>
   </div>
@@ -71,7 +80,8 @@ export default {
 
 <style>
 #chatContainer {
-  background-color: #282c34;
+  border: 1px solid green;
+  border-radius: 15px;
   height: 600px;
   width: 40%;
   margin: 0 auto;
@@ -79,11 +89,7 @@ export default {
   flex-direction: column;
   position: relative;
 }
-.chatHeader {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  color: white;
-  margin-left: 5%;
-}
+
 .chatFooter {
   position: absolute;
   bottom: 0px;
@@ -100,20 +106,7 @@ export default {
   overflow-y: scroll;
   height: 83%;
 }
-#createMessage {
-  width: 80%;
-}
-input:not(#createMessage) {
-  background-color: green;
-  border: 0;
-  color: white;
-  padding: 10px;
-  margin-bottom: 12px;
-  opacity: 0.8;
-}
-input:not(#createMessage):hover {
-  opacity: 0.5;
-}
+
 .messageRow {
   display: flex;
   justify-content: flex-end;
