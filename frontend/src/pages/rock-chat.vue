@@ -1,8 +1,8 @@
 <template>
   <div id="chatContainer">
-    <div class="row flex-center text-h6 text-green">Rock Bot</div>
+    <div class="row flex-center text-h6 text-green q-mt-sm">Rock Bot</div>
     <q-scroll-area style="height: 85%">
-      <div class="chatBody">
+      <div class="chatBody q-pa-md">
         <div class="messages" v-for="message in messages" :key="message.id">
           <div class="messageRow user" v-if="message.id % 2 == 0">
             <div class="message user">
@@ -22,7 +22,7 @@
       <form @submit.prevent="sendMessage()">
         <q-input
           autofocus
-          class="q-pa-md"
+          class="q-pa-md q-pl-lg"
           dense
           outlined
           color="green"
@@ -80,14 +80,16 @@ export default {
 
 <style>
 #chatContainer {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   border-radius: 15px;
-  height: 600px;
-  width: 40%;
+  height: 620px;
+  width: 300px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   position: relative;
+  background-image: url(~assets/king-fu.jpg);
+  background-size: cover;
 }
 
 .chatFooter {
